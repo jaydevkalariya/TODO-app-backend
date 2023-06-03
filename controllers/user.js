@@ -6,7 +6,6 @@ import ErrorHandler from "../middlewares/error.js";
 export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    console.log(email)
     const user = await User.findOne({ email }).select("+password");
 
     if (!user) return next(new ErrorHandler("Invalid Email ", 400));
@@ -60,3 +59,5 @@ export const logout = (req, res) => {
       user: req.user,
     });
 };
+
+

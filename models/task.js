@@ -9,19 +9,24 @@ const schema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  isCompleted: {
-    type: Boolean,
-    default: false,
-  },
-  user: {
+  user:{
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
-  },
+   },
+  sharedusers: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+   }],
   createdAt: {
     type: Date,
     default: Date.now,
   },
+  deadline:{
+    type:Date,
+    required:true,
+  }
 });
 
 export const Task = mongoose.model("Task", schema);
